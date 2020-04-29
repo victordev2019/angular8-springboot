@@ -1,0 +1,34 @@
+<div class="container">
+    <h2>Lista de Usuários</h2>
+    <form class="cl-sm-6">
+      <div class="form-group">
+        <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="nome" placeholder="Pesquisa por nome">
+      </div>
+      <button type="button" (click)="consultarUser()" class="btn btn-primary">Buscar</button>
+      <button type="button" [routerLink]="['/usuarioAdd']" class="btn btn-success ml-2">Novo</button>
+    </form>
+    
+  <table class="table  table table-bordered table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Cpf</th>
+        <th scope="col">Excluir</th>
+        <th scope="col">Alterar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{student.id}}</td>
+        <td>{{student.nome}}</td>
+        <td>{{student.cpf}}</td>
+        <td><button (click)="deleteUsuario(student.id)" class="btn btn-danger">Excluir</button></td>
+        <td><button [routerLink]="['/usuarioAdd' , student.id]" class="btn btn-info">Alterar</button></td>
+        
+      </tr>
+     
+      
+    </tbody>
+  </table>
+</div>
